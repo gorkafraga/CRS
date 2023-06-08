@@ -1,0 +1,112 @@
+---
+title: "AFFORD links hub"
+author: "G.Fraga Gonzalez"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    code_folding: hide
+    toc: yes
+    toc_depth: 5
+    toc_float:
+      collapsed: no
+runhead: AFFORD-HUB
+#abstract: 'Here you can search for the  data you want'
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Intro {.tabset}
+
+## Welcome
+
+This is a central hub where people have search for links to the
+repositories of our data. For this we have a large table with metadata
+and here we can filter it to get the links that we want
+
+## About this site
+
+This is a simple html created with R markdown and reactable. It is easy
+to condense info into different sections with tabs.
+
+Inserting images and modifying text is easy thanks to R markdown visual markdown editor.
+
+For the **database search** there are also more complex options with shiny filter panels.But it scalates quickly. The code for this table is easy, and there are more complex formatting options within this package ('reactable') for the TABLE:
+<https://glin.github.io/reactable/articles/examples.html>
+
+
+
+# About BIDS
+
+-   Brain Imaging Data Structure (BIDS) provides guidelines for
+    (meta)data organization and general file naming :
+
+    <https://bids-specification.readthedocs.io/en/stable/>
+
+    A version of BIDS can be added to meta data so that people know
+    which naming system exactly was used Meta data in JSON format can
+    easily be read by both humans and machines and are easy to create
+    with a script
+
+-   For AFFORD's specific data types, BIDS offers '**BIDS extension
+    proposals':**
+    <https://bids.neuroimaging.io/get_involved.html#extending-the-bids-specification>
+
+    People can propose documentation for metadata that can be reviewed
+    and commented by BIDs members(I guess?) and eventually integrated in
+    their system. If not interested on going through that sharing
+    process, we can still base our system on their examples:
+
+# Database {.tabset}
+
+## Repository finder
+
+Last compiled: `r Sys.Date()`
+
+```{r}
+# read data
+fileinput <- 'V:/gfraga/CRS_AFFORD/FAKEDATASET.xlsx' # Path will change to read file from github repo
+# here some validation checks should be included 
+data <- readxl::read_excel(fileinput)
+
+#plot table
+library(reactable)
+reactable::reactable(data, filterable = TRUE, minRows = 10, searchable = TRUE, columns = list( 
+                        Link = colDef(cell = function(value, index) {
+                          # Render text of 'Link' column as a hyperlink
+                          url <- sprintf("https://wikipedia.org/wiki/%s_%s", data[index, "Link"], value)
+                          htmltools::tags$a(href = url, target = "_blank", as.character(value))
+                        })))
+
+
+
+```
+
+## Codebook
+
+Last compiled: `r Sys.Date()`
+
+Here can put an explanation of the variables Metadata of the metadata?
+
+
+# To do: cleaning the workflow
+
+It is possible to clean the workflow so that owners can edit the text content in markdown files with text (e.g., from Github repository in the browser) and update the table located somewhere in a server. Then the only work would be to open the project in R markdown , render the site again and push it to Github.  
+
+Then this script will be much shorter and cleaner and will just have somelines reading the markdown files stored in the repo, instead of all this text. 
+
+Storage and access to such files, specially the table will have to be discussed. 
+
+# Is this too ugly?
+
+A slightly better looking website can be created with a bit more effort
+but using the same tools and no other dependencies (just a few R
+packages): <https://neuroling.github.io/>. The code is in :
+<https://github.com/Neuroling/neuroling.github.io>
+
+Things like header and text color and style can be modified, more design
+options will be a waste of time with these tools.
