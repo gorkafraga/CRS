@@ -1,21 +1,20 @@
-# Examples
- From SOLEIL synchrotron: 020_Mouse89883_5823_PBS_27keV_9000proj_ring_z0_x0, 
- From Japan synchrotron: JP21-invivo-1scan-phase3-postinjection-brain-40min
-
-# Known issues
-- [ ] Information and scale: informative filenames to minimize reliance on additional 'key' metadata file, while avoiding too long names 
-- [ ] Lab-specific restrictions:  e.g., filenames in Synchrotron in France cannot be modified after recording, while in Japan they could 
-- [ ] Unifying: Data from the same specimen maybe acquired in two locations, but assigned numeric label may not correspond. JP10 is not FR10 necessarily
-  
-
-# General principles
-BIDS has a standardized way of naming files that tries to implement the following principles:
+# Formatting principles
 - No white spaces
 - Only letters, numbers, hyphens, and underscores
-- Do not rely on letter case (UPPERCASE and lowercase)
+- Do not rely on letter case 
 - Use separators (hyphen or underscore) in a systematic and meaningful way.
 
-# Name parts 
+> Known issues
+> - [ ] *Information and length*: informative filenames to minimize reliance on additional 'key' metadata file, while avoiding too long names 
+> - [ ] *Lab-specific restrictions*:  e.g., filenames in Synchrotron in France cannot be modified after recording, while in Japan they could 
+> - [ ] *Unifying*: Data from the same specimen maybe acquired in two locations, but assigned numeric label may not correspond. JP10 is not FR10 necessarily
+  
+# Name fields 
+On this section: 
+*Modelity-agnostic*: field should be common to all subprojects and types of data
+*Modality agnostic*: field that are exclusive to the specific type of recording and/or lab
+*[REQUIRED | OPTIONAL]*: if an field described as OPTIONAL is missing the user should be able to infer the 'default' information
+
 ## Modality agnostic  
 ### Identifiers [REQUIRED]
  - `<specID>` specimen | `<ID>` e.g., if calibrating
@@ -28,7 +27,6 @@ BIDS has a standardized way of naming files that tries to implement the followin
 
 ### Suffix [OPTIONAL]
 - ``<...>`` e.g. xxx_v02 indicates the recording was redone. 
-
 > Known issues
 > - [ ] Suffix assumptions need to be specified here, e.g., is the last version always the valid one? 
  
@@ -76,7 +74,10 @@ Acquisition parameters
 024_Mouse89875_5323_eth_9000proj_ring_redo_z1_x1
  
  
- 
+ # Examples
+ From SOLEIL synchrotron: 020_Mouse89883_5823_PBS_27keV_9000proj_ring_z0_x0, 
+ From Japan synchrotron: JP21-invivo-1scan-phase3-postinjection-brain-40min
+
  
 ## NOTES 
 - www.readthedocs.com as asset for easy to mantain documentation ?
