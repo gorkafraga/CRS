@@ -36,7 +36,8 @@ Revise: Key1-val1_key2-val2 Specify key abbreviations and value types (string, n
 > - [ ] Suffix assumptions need to be specified here, e.g., is the last version always the valid one? 
 > - [ ] Unifying: Data from the same specimen maybe acquired in two locations, but assigned numeric label may not correspond. JP10 is not FR10 necessarily
   
-### Modality specific
+### Modality specific Suffix
+Some will be REQUIRED and some OPTIONAL
 Here we need a summary of the main imaging *modalities* and the different *data types* they generate 
 
 #### Synchrotron: SRµCT
