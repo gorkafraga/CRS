@@ -25,15 +25,17 @@ Revise: Key1-val1_key2-val2 Specify key abbreviations and value types (string, n
  - `<specID>` (*numeric*) specimen  | `<ID>` e.g., if calibrating 'cal01' 
  - `<lab>` (*string*) laboratory 
  - `<recID>`(*string | numeric*) not-user defined, timestamp or alphanumeric id provided by the equiment when recording 
+
 #### Suffix [OPTIONAL]
 - ``<...>`` e.g. xxx_v02 indicates the recording was redone. 
 
 > Issues
->  Identifiers Do we need <loc> & <lab> or <loc> | <lab> ? 
->  <recID> specifications depending on lab/ equipment
+>  Identifiers Do we need `<loc> & <lab> or <loc> | <lab>` ?
+>  `<recID>` specifications depending on lab/ equipment
 > - [ ] Filenames from equipment calibration or tests like: implant02_dremel, test01, etc. They would ideally also include loc, lab, recID 
 > - [ ] Suffix assumptions need to be specified here, e.g., is the last version always the valid one? 
- 
+> - [ ] Unifying: Data from the same specimen maybe acquired in two locations, but assigned numeric label may not correspond. JP10 is not FR10 necessarily
+  
 ### Modality specific
 Here we need a summary of the main imaging *modalities* and the different *data types* they generate 
 
