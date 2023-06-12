@@ -17,36 +17,33 @@ On this section:
 - *Modality specific*: fields exclusive to the specific type of recording and/or lab
 - *[REQUIRED | OPTIONAL]*: if an field described as OPTIONAL is missing the user should be able to infer the 'default' information
 
-## Modality agnostic  
-### Identifiers [REQUIRED]
+### Modality agnostic  
+#### Identifiers [REQUIRED]
  - `<specID>` specimen | `<ID>` e.g., if calibrating
  - `<loc>` location (country)
  - `<lab>` laboratory 
  - `<recID>` (not-user defined) timestamp or alphanumeric id provided by the equiment when recording 
- 
-> Known issues
->  Do we need <loc> & <lab> or <loc> | <lab> ? 
+#### Suffix [OPTIONAL]
+- ``<...>`` e.g. xxx_v02 indicates the recording was redone. 
+
+> Issues
+>  Identifiers Do we need <loc> & <lab> or <loc> | <lab> ? 
 >  <recID> specifications depending on lab/ equipment
 > - [ ] Filenames from equipment calibration or tests like: implant02_dremel, test01, etc. They would ideally also include loc, lab, recID 
-
-### Suffix [OPTIONAL]
-- ``<...>`` e.g. xxx_v02 indicates the recording was redone. 
-> Known issues
 > - [ ] Suffix assumptions need to be specified here, e.g., is the last version always the valid one? 
  
-## Modality specific
+### Modality specific
 Here we need a summary of the main imaging *modalities* and the different *data types* they generate 
- > issues: 
- > disambiguate terms like: field, modality and type 
-  
-### SRµCT
+
+#### SRµCT
 #### Speciment status [REQUIRED]
 - ``<status>`` Vivo | dead | Dying 
 #### Acquisition parameters[REQUIRED] 
 Here is where things can scalate into long strings...
 - ``<...>``
-> To do: 
-  > - [ ] here some fields will be exclusive of some labs..
+ > issues: 
+ > - [ ]  disambiguate terms like: field, modality and type 
+ > - [ ] here some fields will be exclusive of some labs..
 
 # Examples
 (in progress..)
