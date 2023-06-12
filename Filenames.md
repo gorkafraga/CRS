@@ -12,8 +12,8 @@
 # Name fields 
 On this section:
 
-- *Modelity-agnostic*: field should be common to all subprojects and types of data
-- *Modality agnostic*: field that are exclusive to the specific type of recording and/or lab
+- *Modelity agnostic*: field should be common to all subprojects and types of data
+- *Modality specific*: fields exclusive to the specific type of recording and/or lab
 - *[REQUIRED | OPTIONAL]*: if an field described as OPTIONAL is missing the user should be able to infer the 'default' information
 
 ## Modality agnostic  
@@ -22,9 +22,10 @@ On this section:
  - `<loc>` location (country)
  - `<lab>` laboratory 
  - `<recID>` (not-user defined) timestamp or alphanumeric id provided by the equiment when recording 
-
+ 
 > Known issues
 >  Do we need <loc> & <lab> or <loc> | <lab> ? 
+>  <recID> specifications depending on lab/ equipment
 > - [ ] Filenames from equipment calibration or tests like: implant02_dremel, test01, etc. They would ideally also include loc, lab, recID 
 
 ### Suffix [OPTIONAL]
@@ -32,54 +33,22 @@ On this section:
 > Known issues
 > - [ ] Suffix assumptions need to be specified here, e.g., is the last version always the valid one? 
  
-#### Modality specific
- 
-##### SRµCT
-Specimen description
+# Modality specific
+Here we need a summary of the main imaging *modalities* and the different *data types* they generate 
+ > issues: 
+ > disambiguate terms like: modality and  data types 
+  
+## SRµCT
+### Speciment status [REQUIRED]
 - ``<status>`` Vivo | dead | Dying 
-
-Acquisition parameters 
-
+### Acquisition parameters[REQUIRED] 
+Here is where things can scalate into long strings...
 - ``<...>``
- 
-##### MRI
+> To do: 
+  > - [ ] here some fields will be exclusive of some labs..
 
-Specimen description
-
-- <status> Vivo | dead | Dying 
-
-Acquisition parameters 
-
-- <...>
-
-##### Microscope
-
-
-
-
- ### Name parts
- 
- Recording identifiers [all REQUIRED]
- - sID : specimen
- - Loc (country)
- - Lab/institution ?
- 
- Acquisition parameters
- 
- Specimen descriptors
- 
- 
- 
- 
- 
- E.g., 
-024_Mouse89875_5323_eth_9000proj_ring_redo_z1_x1
- 
- 
  # Examples
+ (in progress..)
  From SOLEIL synchrotron: 020_Mouse89883_5823_PBS_27keV_9000proj_ring_z0_x0, 
  From Japan synchrotron: JP21-invivo-1scan-phase3-postinjection-brain-40min
 
- 
-## NOTES 
-- www.readthedocs.com as asset for easy to mantain documentation ?
