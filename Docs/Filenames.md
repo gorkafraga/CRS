@@ -13,7 +13,7 @@
 # Name fields 
 On this section:
 
-- *Modelity agnostic*: field should be common to all subprojects and types of data
+- *Modality agnostic*: field should be common to all subprojects and types of data
 - *Modality specific*: fields exclusive to the specific type of recording and/or lab
 - *[REQUIRED | OPTIONAL]*: if an field described as OPTIONAL is missing the user should be able to infer the 'default' information
 
