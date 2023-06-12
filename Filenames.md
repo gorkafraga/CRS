@@ -33,22 +33,22 @@ On this section:
 > Known issues
 > - [ ] Suffix assumptions need to be specified here, e.g., is the last version always the valid one? 
  
-# Modality specific
+## Modality specific
 Here we need a summary of the main imaging *modalities* and the different *data types* they generate 
  > issues: 
  > disambiguate terms like: modality and  data types 
   
-## SRµCT
-### Speciment status [REQUIRED]
+### SRµCT
+#### Speciment status [REQUIRED]
 - ``<status>`` Vivo | dead | Dying 
-### Acquisition parameters[REQUIRED] 
+#### Acquisition parameters[REQUIRED] 
 Here is where things can scalate into long strings...
 - ``<...>``
 > To do: 
   > - [ ] here some fields will be exclusive of some labs..
 
- # Examples
- (in progress..)
- From SOLEIL synchrotron: 020_Mouse89883_5823_PBS_27keV_9000proj_ring_z0_x0, 
- From Japan synchrotron: JP21-invivo-1scan-phase3-postinjection-brain-40min
+# Examples
+(in progress..)
+From SOLEIL synchrotron: 020_Mouse89883_5823_PBS_27keV_9000proj_ring_z0_x0, 
+From Japan synchrotron: JP21-invivo-1scan-phase3-postinjection-brain-40min
 
