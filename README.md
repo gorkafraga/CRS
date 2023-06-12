@@ -2,35 +2,33 @@
 Temporary Repository for my work at the Center for reproducible science - AFFORD project
 
  ## File naming
- 
- 020_Mouse89883_5823_PBS_27keV_9000proj_ring_z0_x0
+ Some example of file names:  
+ From SOLEIL synchrotron: 020_Mouse89883_5823_PBS_27keV_9000proj_ring_z0_x0, 
+ From Japan synchrotron: JP21-invivo-1scan-phase3-postinjection-brain-40min
+
+### Known issues
+```
+- Different lab locations have different requirements. E.g., filenames in Synchrotron in France cannot be modified after recording
+- Data from the same specimen maybe acquired in two locations, but assigned numeric label may not correspond. JP10 is not FR10 necessarily
+```
+
 
 ### General principles
-
 BIDS has a standardized way of naming files that tries to implement the following principles:
 
 - No white spaces
--
-Only letters, numbers, hyphens, and underscores
-
-not rely on letter case (UPPERCASE and lowercase)
-
-Use separators and case in a systematic and meaningful way.
-
-thisIsCamelCase
-
-this_is_snake_case
-
+- Only letters, numbers, hyphens, and underscores
+- Do not rely on letter case (UPPERCASE and lowercase)
+- Use separators (hyphen or underscore) in a systematic and meaningful way.
 
  ## Name parts 
-
 ### Modality agnostic 
  
  Recording identifiers [all REQUIRED]
- - <specID>:  specimen
- - <Loc>: country
- - <Lab>: /institution ?
- - <recID> stamp provided by machine
+ - `<specID>`   specimen
+ - `<loc>` country
+ - `<lab>` /institution ?
+ - `<recID>` uneditable timestamp or alphanumeric id provided by the equiment when recording 
 
 Suffixes [OPTIONAL]
 - <...> e.g. version specification if redoing recording 
