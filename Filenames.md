@@ -21,10 +21,10 @@ Revise: Key1-val1_key2-val2 Specify key abbreviations and value types (string, n
 
 ### Modality agnostic  
 #### Identifiers [REQUIRED]
- - `<specID>` specimen | `<ID>` e.g., if calibrating
- - `<loc>` location (country)
- - `<lab>` laboratory 
- - `<recID>` (not-user defined) timestamp or alphanumeric id provided by the equiment when recording 
+ - `<specID>` (*numeric*) specimen  | `<ID>` e.g., if calibrating 'cal01' 
+ - `<loc>`  (*string*) location, country
+ - `<lab>` (*string*) laboratory 
+ - `<recID>`(*string | numeric*) not-user defined, timestamp or alphanumeric id provided by the equiment when recording 
 #### Suffix [OPTIONAL]
 - ``<...>`` e.g. xxx_v02 indicates the recording was redone. 
 
