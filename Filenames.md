@@ -1,13 +1,14 @@
+# Main issues
+> 
+> - [ ] **Information and length**: informative filenames to minimize reliance on additional 'key' metadata file, while avoiding too long names 
+> - [ ] **Lab-specific restrictions**:  e.g., filenames in Synchrotron in France cannot be modified after recording, while in Japan they could 
+> - [ ] **Unifying**: Data from the same specimen maybe acquired in two locations, but assigned numeric label may not correspond. JP10 is not FR10 necessarily
+
 # Formatting principles
 - No white spaces
 - Only letters, numbers, hyphens, and underscores
 - Do not rely on letter case 
 - Use separators (hyphen or underscore) in a systematic and meaningful way.
-
-> Known issues
-> - [ ] **Information and length**: informative filenames to minimize reliance on additional 'key' metadata file, while avoiding too long names 
-> - [ ] **Lab-specific restrictions**:  e.g., filenames in Synchrotron in France cannot be modified after recording, while in Japan they could 
-> - [ ] **Unifying**: Data from the same specimen maybe acquired in two locations, but assigned numeric label may not correspond. JP10 is not FR10 necessarily
   
 # Name fields 
 On this section:
