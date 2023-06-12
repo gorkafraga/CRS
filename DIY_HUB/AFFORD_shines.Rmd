@@ -1,0 +1,41 @@
+---
+title: Shiny Reactable in Self-Contained HTML
+output:
+  html_document:
+    self_contained: true
+runtime: shiny
+---
+
+library(crosstalk)
+library(reactable)
+
+cars <- MASS::Cars93[1:20, c("Manufacturer", "Model", "Type", "Price")]
+data <- SharedData$new(cars)
+
+html_file <- "output.html"
+
+rmarkdown::render(
+  text = '
+```{r, echo=FALSE}
+fluidRow(
+  column(
+    4,
+    filter_checkbox("type", "Type", data, ~Type),
+    filter_slider("price", "Price", data, ~Price, width = "100%"),
+    filter_select("mfr", "Manufacturer", data, ~Manufacturer)
+  ),
+  column(
+    8,
+    reactable(data, minRows = 10)
+  )
+)
+```',
+  output_file = html_file,
+  output_format = "html_document",
+  runtime = "shiny",
+  params = list(data = data),
+  self_contained = TRUE
+)
+
+cat("Output saved to", html_file, "\n")
+````

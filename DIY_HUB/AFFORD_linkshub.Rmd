@@ -69,7 +69,7 @@ Last compiled: `r Sys.Date()`
 
 ```{r}
 # read data
-fileinput <- 'V:/gfraga/CRS_AFFORD/FAKEDATASET.xlsx' # Path will change to read file from github repo
+fileinput <- 'V:/gfraga/CRS_AFFORD/DIY_HUB/FAKEDATASET.xlsx' # Path will change to read file from github repo
 # here some validation checks should be included 
 data <- readxl::read_excel(fileinput)
 
