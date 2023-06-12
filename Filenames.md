@@ -5,24 +5,26 @@
 - Use separators (hyphen or underscore) in a systematic and meaningful way.
 
 > Known issues
-> - [ ] *Information and length*: informative filenames to minimize reliance on additional 'key' metadata file, while avoiding too long names 
-> - [ ] *Lab-specific restrictions*:  e.g., filenames in Synchrotron in France cannot be modified after recording, while in Japan they could 
-> - [ ] *Unifying*: Data from the same specimen maybe acquired in two locations, but assigned numeric label may not correspond. JP10 is not FR10 necessarily
+> - [ ] **Information and length**: informative filenames to minimize reliance on additional 'key' metadata file, while avoiding too long names 
+> - [ ] **Lab-specific restrictions**:  e.g., filenames in Synchrotron in France cannot be modified after recording, while in Japan they could 
+> - [ ] **Unifying**: Data from the same specimen maybe acquired in two locations, but assigned numeric label may not correspond. JP10 is not FR10 necessarily
   
 # Name fields 
-On this section: 
-*Modelity-agnostic*: field should be common to all subprojects and types of data
-*Modality agnostic*: field that are exclusive to the specific type of recording and/or lab
-*[REQUIRED | OPTIONAL]*: if an field described as OPTIONAL is missing the user should be able to infer the 'default' information
+On this section:
+
+- *Modelity-agnostic*: field should be common to all subprojects and types of data
+- *Modality agnostic*: field that are exclusive to the specific type of recording and/or lab
+- *[REQUIRED | OPTIONAL]*: if an field described as OPTIONAL is missing the user should be able to infer the 'default' information
 
 ## Modality agnostic  
 ### Identifiers [REQUIRED]
  - `<specID>` specimen | `<ID>` e.g., if calibrating
- - `<loc>` country
- - `<lab>` institution 
+ - `<loc>` location (country)
+ - `<lab>` laboratory 
  - `<recID>` (not-user defined) timestamp or alphanumeric id provided by the equiment when recording 
 
 > Known issues
+>  Do we need <loc> & <lab> or <loc> | <lab> ? 
 > - [ ] Filenames from equipment calibration or tests like: implant02_dremel, test01, etc. They would ideally also include loc, lab, recID 
 
 ### Suffix [OPTIONAL]
