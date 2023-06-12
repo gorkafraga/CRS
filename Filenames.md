@@ -17,6 +17,8 @@ On this section:
 - *Modality specific*: fields exclusive to the specific type of recording and/or lab
 - *[REQUIRED | OPTIONAL]*: if an field described as OPTIONAL is missing the user should be able to infer the 'default' information
 
+Revise: Key1-val1_key2-val2
+
 ### Modality agnostic  
 #### Identifiers [REQUIRED]
  - `<specID>` specimen | `<ID>` e.g., if calibrating
