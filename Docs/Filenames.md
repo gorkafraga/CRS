@@ -23,7 +23,7 @@ Revise: Key1-val1_key2-val2 Specify key abbreviations and value types (string, n
 #### Identifiers [REQUIRED]
  - `<loc>`  (*string*) location, country
  - `<specID>` (*numeric*) specimen  | `<ID>` e.g., if calibrating 'cal01' 
- - `<lab>` (*string*) laboratory 
+ - `<lab>` (*string*) laboratory .... Ideally this codes also the modality (e.g., synchrotron, MRI, etc)
  - `<recID>`(*string | numeric*) not-user defined, timestamp or alphanumeric id provided by the equiment when recording 
 
 #### Suffix [OPTIONAL]
