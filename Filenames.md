@@ -37,7 +37,7 @@ On this section:
 ## Modality specific
 Here we need a summary of the main imaging *modalities* and the different *data types* they generate 
  > issues: 
- > disambiguate terms like: modality and  data types 
+ > disambiguate terms like: field, modality and type 
   
 ### SRµCT
 #### Speciment status [REQUIRED]
