@@ -1,5 +1,5 @@
 # CRS_AFFORD
-Center for reproducible science - AFFORD project
+Temporary Repository for my work at the Center for reproducible science - AFFORD project
 
  ## File naming
  
