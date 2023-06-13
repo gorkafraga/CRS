@@ -22,27 +22,27 @@ On this section:
 - *Modality specific*: fields exclusive to the specific type of recording and/or lab
 - *[REQUIRED | OPTIONAL]*: if an field described as OPTIONAL is missing the user should be able to infer the 'default' information
 
-Revise: Key1-val1_key2-val2 Specify key abbreviations and value types (string, numeric)
+Main scheme:
 
-### Modality agnostic  
-#### Identifiers [REQUIRED]
+```Key1-val1_key2-val2_suffix``` 
+
+## Identifiers [REQUIRED]
+Modality agnostic 
  - `<loc>`  (*string*) location, country
  - `<specID>` (*numeric*) specimen  | `<ID>` e.g., if calibrating 'cal01' 
  - `<lab>` (*string*) laboratory .... Ideally this codes also the modality (e.g., synchrotron, MRI, etc)
  - `<recID>`(*string | numeric*) not-user defined, timestamp or alphanumeric id provided by the equiment when recording 
 
-#### Suffix [OPTIONAL]
-- ``<...>`` e.g. xxx_v02 indicates the recording was redone. 
- 
-### Modality specific Suffix
+## Suffixes 
+Modality specific  
 Some will be REQUIRED and some OPTIONAL
 - Here we need a summary of the main imaging *modalities* and the different *data types* they generate 
 - For each modality, there will be also Lab-specific
 
+### Synchrotron: SRµCT
+##### Speciment status [REQUIRED]:
+ ``<status>`` Vivo | dead | Dying 
 
-#### Synchrotron: SRµCT
-##### Speciment status [REQUIRED]
-- ``<status>`` Vivo | dead | Dying 
 ##### Acquisition parameters[REQUIRED] 
 Here is where things can scalate into long strings.
 - ``<...>``
@@ -53,3 +53,5 @@ From SOLEIL synchrotron: 020_Mouse89883_5823_PBS_27keV_9000proj_ring_z0_x0
 
 From Japan synchrotron: JP21-invivo-1scan-phase3-postinjection-brain-40min
 
+### Suffixes [OPTIONAL]
+- ``<...>`` e.g. xxx_v02 indicates the recording was redone. 
