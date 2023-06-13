@@ -13,6 +13,11 @@
 - Only letters, numbers, hyphens, and underscores
 - Do not rely on letter case 
 - Use separators (hyphen or underscore) in a systematic and meaningful way.
+- Fields or parts, maybe identifiers or suffixes 
+-  Most identifiers are expected to be REQUIRED, suffixes REQUIRED | OPTION
+- Main 'fields' separated by underscore
+- If a field consists on key and a value, keep a consistent format: key-value or keyvalue (e.g., s001 or s-001) 
+
   
 # Name fields 
 On this section:
