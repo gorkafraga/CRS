@@ -3,11 +3,10 @@
 > - [ ] **Information and length**: informative filenames to minimize reliance on additional 'key' metadata file, while avoiding too long names 
 > - [ ] **Lab-specific restrictions**:  e.g., filenames in Synchrotron in France cannot be modified after recording, while in Japan they could 
 > - [ ] **Unifying**: Data from the same specimen maybe acquired in two locations, but assigned numeric label may not correspond. JP10 is not FR10 necessarily
->  Identifiers Do we need `<loc> & <lab> or <loc> | <lab>` ?
->  `<recID>` specifications depending on lab/ equipment
+> - Identifiers: Do we need location and lab labels?  `<loc> & <lab> or <loc> | <lab>` ?
+> - Unique recording identifiers `<recID>`, specifications depending on lab/ equipment?
 > - [ ] Filenames from equipment calibration or tests like: implant02_dremel, test01, etc. They would ideally also include loc, lab, recID 
 > - [ ] Suffix assumptions need to be specified here, e.g., is the last version always the valid one? 
-> - [ ] Unifying: Data from the same specimen maybe acquired in two locations, but assigned numeric label may not correspond. JP10 is not FR10 necessarily
   
 # Formatting principles
 - No white spaces
