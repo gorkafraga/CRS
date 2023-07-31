@@ -1,0 +1,94 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<style>
+  /* Add CSS for the hover effect */
+  img:hover {
+    height: 150px; /* Change this value to the desired enlarged height */
+    width: 150px; /* Change this value to the desired enlarged width */
+  }
+</style>
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+ 
+## Styles
+
+The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+
+    output: 
+      rmarkdown::html_vignette:
+        css: mystyles.css
+  
+
+```{r, echo=FALSE, results='asis'}
+library(DT)
+dirinput <- 'C:/Users/GFraga/Desktop/AFFORD_THUMBS/Spring/'
+       
+fnames <- dir(dirinput)
+metadata <- as.data.frame(fnames[grepl('^JP*.*.jpg$',fnames)])
+colnames(metadata) <- 'file'
+# split names 
+parts <- strsplit(metadata$file,'-')
+basenames <- sapply(strsplit(metadata$file,'.tif'),'[[',1)
+metadata$specID <- sapply(strsplit(basenames,'-'),'[[',1)
+metadata$status <- sapply(strsplit(basenames,'-'),'[[',2)
+metadata$scan <- sapply(strsplit(basenames,'-'),'[[',3)
+metadata$seq <- sapply(strsplit(basenames,'_'),'[[',2)
+metadata$rec <- sapply(strsplit(basenames,'_rec'),'[[',2)
+
+
+# add html component 
+
+metadata$link <- metadata$file
+metadata$link <- paste0('<img src=\'Spring/', metadata$link, '\' height=\'50\' witdth = \'50\'></img>')
+
+# table
+ datatable(
+    metadata, filter = "top",
+    rownames=FALSE, width="100%", 
+    class='compact cell-border hover', extensions='Buttons',
+    options=list(dom='Bfrtip',buttons=c('copy','csv','excel')),
+    escape=FALSE
+  )
+ 
+
+
+
+#fileinput <- 'C:/Users/GFraga/Desktop/AFFORD_THUMBS/Metadata.xlsx' # Path will change to read file from github repo
+#library(DT)
+# here some validation checks should be included 
+#data <- readxl::read_excel(fileinput)
+
+#plot table
+#library(reactable)
+
+ 
+
+ 
+
+
+
+#reactable::reactable(data, filterable = TRUE, minRows = 10, searchable = TRUE, columns = list( 
+ #                       Link = colDef(cell = function(value, index) {
+  #                        # Render text of 'Link' column as a hyperlink
+   #                       htmltools::tags$a(href = url, target = "_blank", as.character(value))
+    #                    }))) 
+```
+
+Also a quote using `>`:
+
+> "He who gives up [code] safety for [code] speed deserves neither."
+([via](https://twitter.com/hadleywickham/status/504368538874703872))

@@ -1,0 +1,130 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+library(crosstalk)
+library(leaflet)
+library(DT)
+library(plotly)
+
+
+
+# read data
+fileinput <- 'C:/Users/GFraga/Desktop/AFFORD_THUMBS/Metadata.xlsx' # Path will change to read file from github repo
+
+# here some validation checks should be included 
+data <- readxl::read_excel(fileinput)
+
+#bscols(
+ #  datatable(data, extensions="Scroller", style="bootstrap", filter = "top", #class="compact", width="100%",
+#    options=list(deferRender=TRUE, scrollY=300, scroller=TRUE))
+#)
+#img <- image_read('C:/Users/GFraga/Desktop/AFFORD_THUMBS/pics/sicily.jpg')
+sd <- SharedData$new(data)
+
+#filter_checkbox(
+#  id = "selType",
+#  label = "Type",
+#  sharedData = sd,
+#  group = ~TYPE
+#)
+
+#bscols(
+#    datatable(sd, extensions="Scroller", style="bootstrap", filter = "top", class="compact", width="100%",
+#    options=list(deferRender=TRUE, scrollY=300, scroller=TRUE))
+  
+#)
+bscols(widths = c(3, NA),
+       list(  filter_checkbox("selType", "Type", sd, ~TYPE, inline = TRUE),
+         filter_checkbox("sIDSel", "Cylinders", sd, ~SesID, inline = TRUE)
+       ),
+      datatable(
+    sd,
+    rownames=FALSE, width="100%", 
+    class='compact cell-border hover', extensions='Buttons',
+    options=list(dom='Bfrtip',buttons=c('copy','csv','excel'))
+    )
+)
+
+datatableWidget <- datatable(
+    sd,
+    rownames=FALSE, width="100%", 
+    class='compact cell-border hover', extensions='Buttons',
+    options=list(dom='Bfrtip',buttons=c('copy','csv','excel'))
+    )
+ 
+sd %>% print
+
+```
+
+<!-- Column {data-width=350} -->
+<!-- ----------------------------------------------------------------------- -->
+
+<!-- ### Chart B -->
+
+<!-- ```{r} -->
+<!-- library(crosstalk) -->
+<!-- library(magick) -->
+<!-- library(plotly) -->
+<!-- fileinput <- 'C:/Users/GFraga/Desktop/AFFORD_THUMBS/Metadata.xlsx'  -->
+<!-- data <- readxl::read_excel(fileinput) -->
+
+
+<!-- #img <- image_read('C:/Users/GFraga/Desktop/AFFORD_THUMBS/pics/sicily.jpg') -->
+<!-- #print(img) -->
+
+<!-- #fig <- plot_ly( type='image',z=img) -->
+<!-- #fig -->
+<!-- datatableWidget <- datatable( -->
+<!--     sd, -->
+<!--     rownames=FALSE, width="100%",  -->
+<!--     class='compact cell-border hover', extensions='Buttons', -->
+<!--     options=list(dom='Bfrtip',buttons=c('copy','csv','excel'))) -->
+
+
+
+
+<!-- ``` -->
+
+<!-- ### Chart C -->
+
+<!-- ```{r} -->
+<!-- library(crosstalk) -->
+<!-- library(magick) -->
+<!-- library(plotly) -->
+<!-- shared_mtcars <- SharedData$new(mtcars) -->
+<!-- bscols(widths = c(3, NA), -->
+<!--        list( -->
+<!--          filter_checkbox("cyl", "Cylinders", shared_mtcars, ~cyl, inline = TRUE) -->
+<!--        ), -->
+<!--        plotly::ggplotly(shared_mtcars %>%  -->
+<!--                           ggplot(aes(x = mpg, group = factor(cyl))) +  -->
+<!--                           geom_histogram(fill = "pale green", -->
+<!--                                          color = "black") +  -->
+<!--                           theme(legend.position = "none")) -->
+<!-- ) -->
+<!-- ``` -->
+
+
+<!-- ### Chart D -->
+
+<!-- ```{r} -->
+<!-- library(crosstalk) -->
+<!-- library(magick) -->
+<!-- library(plotly) -->
+
+<!-- ``` -->
