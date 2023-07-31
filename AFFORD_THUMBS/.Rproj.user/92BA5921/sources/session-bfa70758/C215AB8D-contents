@@ -1,0 +1,212 @@
+---
+title: "Picture data explorer"
+subtitle: "A simple table with filters to explore a collection of pictures from the AFFORD project"
+titlerunning: "CRS"
+author: "G Fraga-Gonzalez (CRS,UZH)"
+#abstract: |
+# A simple table with filters to explore a collection of pictures
+date: "`r Sys.Date()`"
+output:  
+  html_document:
+    code_folding: hide
+    toc: false
+    toc_float: true
+    collapsed: true
+    number_sections: false
+    toc_depth: 3
+    cache: FALSE
+#output: rmarkdown::html_vignette
+#vignette: >
+#  %\VignetteIndexEntry{Vignette Title}
+#  %\VignetteEngine{knitr::rmarkdown}
+#  %\VignetteEncoding{UTF-8}
+---
+
+ 
+```{r setup, include=FALSE}
+    knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
+```
+
+# Metadata 
+
+```{=html}
+<style>
+  /* Add CSS for the hover effect */
+  img:hover {
+    height: 150px; /* Change this value to the desired enlarged height */
+    width: 650px; /* Change this value to the desired enlarged width */
+  }
+</style>
+```
+We need a csv or excel table with metadata that is also reflected in the filename parts.
+Click on 'Code' in this section to show how it was done. 
+
+
+```{r, echo=TRUE, results='asis'}
+library(DT)
+library(dplyr)
+#-------------------------------------------------
+# Read filenames from directory
+dirinput <-
+  'C:/Users/GFraga/Documents/GitHub/CRS_AFFORD/AFFORD_THUMBS/Spring/'
+fnames <- dir(dirinput)
+ext = '.jpg'
+pattern = paste0('^JP*.*',ext,'$')
+# Create metadata table
+metadata <- as.data.frame(fnames[grepl(pattern, fnames)])
+colnames(metadata) <- 'file'
+
+# Fill metadata columns from different filename parts
+
+basenames <- sapply(strsplit(metadata$file, ext), '[[', 1)
+basenames_firstpart <- sapply(strsplit(basenames,'_'),'[[',1)
+
+
+metadata$specID <- sapply(strsplit(basenames, '-'), '[[', 1)
+metadata$status <- sapply(strsplit(basenames, '-'), '[[', 2)
+metadata$scanID <- sapply(strsplit(basenames_firstpart, '-'), '[[', 3)
+metadata$desc <- sapply(strsplit(basenames_firstpart, '-'), function(x) paste(x[-(1:3)], collapse = '-')) # take everything after the first 2 elements of the first part
+
+#metadata$version <- sapply(strsplit(basenames,'-v'), function(x) paste0(x[-(1)],collapse = ''))
+#metadata$version <- sapply(metadata$version, function(x) sub('_.*', '', x))
+
+metadata$seq <- sapply(strsplit(sapply(strsplit(basenames, '_rec'), '[[', 1),'_'),function(x) paste(x[-1],collapse=''))
+
+# Move version info from desc to seq 
+metadata$desc[which(sapply(metadata$seq, function(x) grepl('v.*',x)))] <- metadata$seq[which(sapply(metadata$seq, function(x) grepl('v.*',x)))]
+metadata$seq[which(sapply(metadata$seq, function(x) grepl('v.*',x)))] <- 'inconsistent filename' 
+
+# recording ID 
+metadata$rec <- sapply(strsplit(basenames, '_rec'), function(x) paste0('rec',x[(2)]))
+
+
+# add html component to column with file namens
+metadata$pic <- metadata$file
+metadata$pic <- paste0('<img src=\'Spring/', metadata$pic, '\' height=\'50\' witdth = \'50\'></img>')
+
+
+metadata %>% relocate(file, .after = last_col())
+
+
+```
+
+
+# Filenames
+
+#### Scheme
+
+`<specID>_<status>_<scanID><(desc)>_<rec>`
+
+#### Labels
+
+`specID`: *str + num*  specimen ID (JP01)
+
+`status`:  *str* specimen status (dead | invivo)
+
+`scanID`: *num + str* scan number (1scan or scan1)
+
+`desc`: OPTIONAL *str + num* additional description of number of scans, anatomy, state,version,etc
+
+`seq`: *num * sequence number (053)
+
+`rec`: *str + num* recording identifier  (rec00182)
+
+#### Legend:
+
+`<field>` required field
+
+`<(field)>` Optional field
+
+
+# Picture viewer {.tabset .tabset-fade .tabset-pills} 
+## Compact
+
+
+```{r, echo=TRUE, results='asis'}
+# Dynamic table -------------------------------------------------
+
+
+
+# Render table (ref https://www.rdocumentation.org/packages/DT/versions/0.28/topics/datatable)
+ datatable(
+    metadata, filter = "top",
+    rownames=FALSE, width="100%",
+    class='compact cell-border hover', # CSS classes https://datatables.net/manual/styling/classes
+    extensions=c('Buttons','Select','SearchPanes'),
+    selection = 'none',
+    options=list(dom='Bfrtip', buttons=c('copy','csv','excel','pdf')),
+    escape=FALSE
+  )
+ 
+
+ 
+  
+```
+
+## With Filter Panes
+
+```{r, echo=TRUE, results='asis'}
+# Dynamic table -------------------------------------------------
+
+
+ datatable(
+  metadata, filter = "top",
+  rownames=FALSE, width="100%", 
+  class='compact cell-border hover', # CSS classes https://datatables.net/manual/styling/classes
+  extensions=c('Buttons','Select','SearchPanes'),
+  #selection = 'none',
+  selection = 1,
+  escape = FALSE,
+  options = list(dom = 'PBfrtip', buttons=c('copy','csv','excel','pdf'),
+                 columnDefs = list(list(
+                   searchPanes = list(show = TRUE), 
+                   targets = 5
+                 ))),
+)
+
+  
+```
+
+## With Collapsed Filter Panes
+
+```{r, echo=TRUE, results='asis'}
+# Dynamic table -------------------------------------------------
+
+
+datatable(
+  metadata, filter = "top",
+  rownames=FALSE, width="100%", 
+  class='compact cell-border hover', # CSS classes https://datatables.net/manual/styling/classes
+  extensions=c('Buttons','Select','SearchPanes'),
+  #selection = 'none',
+  selection = 1,
+  escape = FALSE,
+  options = list(
+    dom = 'Btip',
+    buttons=c('searchPanes','copy','csv','excel','pdf'),
+    language = list(searchPanes = list(collapse = "Filter Rows")),
+    #scrollY = 390,
+    #scroller = TRUE,
+    columnDefs = list(
+      list(searchPanes = list(show = FALSE), targets = 5),
+      list(searchPanes = list(controls = TRUE), targets = 5)
+    )
+  ) 
+)      
+      
+
+  
+```
+
+
+
+<!-- -->
+
+
+#  {.unnumbered}
+
+## Issues
+
+- Naming: specID includes country, relabel it to `<country><specID>` ?
+- Hover resizing will have to be adapted if Scroller is TRUE
+- Using tabs remove the TOC
