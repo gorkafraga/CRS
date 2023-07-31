@@ -1,46 +1,60 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Picture data explorer"
+subtitle: "A simple table with filters to explore a collection of pictures from the AFFORD project"
+titlerunning: "CRS"
+author: "G Fraga-Gonzalez (CRS,UZH)"
+#abstract: |
+# A simple table with filters to explore a collection of pictures
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output:  
+  html_document:
+    code_folding: hide
+    toc: false
+    toc_float: true
+    collapsed: true
+    number_sections: false
+    toc_depth: 3
+#output: rmarkdown::html_vignette
+#vignette: >
+#  %\VignetteIndexEntry{Vignette Title}
+#  %\VignetteEngine{knitr::rmarkdown}
+#  %\VignetteEncoding{UTF-8}
 ---
 
+ 
+```{r setup, include=FALSE}
+    knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
+```
+
+# Metadata 
+
+```{=html}
 <style>
   /* Add CSS for the hover effect */
   img:hover {
     height: 150px; /* Change this value to the desired enlarged height */
-    width: 150px; /* Change this value to the desired enlarged width */
+    width: 650px; /* Change this value to the desired enlarged width */
   }
 </style>
-
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
 ```
- 
-## Styles
+We need a csv or excel table with metadata that is also reflected in the filename parts.
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
 
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-  
 
-```{r, echo=FALSE, results='asis'}
+
+
+```{r, echo=TRUE, results='asis'}
 library(DT)
-dirinput <- 'C:/Users/GFraga/Desktop/AFFORD_THUMBS/Spring/'
-       
+#-------------------------------------------------
+# Read filenames from directory 
+dirinput <- 'C:/Users/GFraga/Documents/GitHub/CRS_AFFORD/AFFORD_THUMBS/Spring/'
 fnames <- dir(dirinput)
+
+# Create metadata table
 metadata <- as.data.frame(fnames[grepl('^JP*.*.jpg$',fnames)])
 colnames(metadata) <- 'file'
-# split names 
+
+# split name parts to fill metadata columns
 parts <- strsplit(metadata$file,'-')
 basenames <- sapply(strsplit(metadata$file,'.tif'),'[[',1)
 metadata$specID <- sapply(strsplit(basenames,'-'),'[[',1)
@@ -49,46 +63,95 @@ metadata$scan <- sapply(strsplit(basenames,'-'),'[[',3)
 metadata$seq <- sapply(strsplit(basenames,'_'),'[[',2)
 metadata$rec <- sapply(strsplit(basenames,'_rec'),'[[',2)
 
+```
 
-# add html component 
+#  {.tabset .tabset-fade .tabset-pills} 
+## Compact viewer
 
+
+```{r, echo=TRUE, results='asis'}
+# Dynamic table -------------------------------------------------
+
+# add html component to column with file namens
 metadata$link <- metadata$file
 metadata$link <- paste0('<img src=\'Spring/', metadata$link, '\' height=\'50\' witdth = \'50\'></img>')
 
-# table
+# Render table (ref https://www.rdocumentation.org/packages/DT/versions/0.28/topics/datatable)
  datatable(
     metadata, filter = "top",
-    rownames=FALSE, width="100%", 
-    class='compact cell-border hover', extensions='Buttons',
-    options=list(dom='Bfrtip',buttons=c('copy','csv','excel')),
+    rownames=FALSE, width="100%",
+    class='compact cell-border hover', # CSS classes https://datatables.net/manual/styling/classes
+    extensions=c('Buttons','Select','SearchPanes'),
+    selection = 'none',
+    options=list(dom='Bfrtip', buttons=c('copy','csv','excel','pdf')),
     escape=FALSE
   )
  
 
-
-
-#fileinput <- 'C:/Users/GFraga/Desktop/AFFORD_THUMBS/Metadata.xlsx' # Path will change to read file from github repo
-#library(DT)
-# here some validation checks should be included 
-#data <- readxl::read_excel(fileinput)
-
-#plot table
-#library(reactable)
-
  
-
- 
-
-
-
-#reactable::reactable(data, filterable = TRUE, minRows = 10, searchable = TRUE, columns = list( 
- #                       Link = colDef(cell = function(value, index) {
-  #                        # Render text of 'Link' column as a hyperlink
-   #                       htmltools::tags$a(href = url, target = "_blank", as.character(value))
-    #                    }))) 
+  
 ```
 
-Also a quote using `>`:
+## Viewer with Filter panes
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+```{r, echo=TRUE, results='asis'}
+# Dynamic table -------------------------------------------------
+
+# add html component to column with file namens
+metadata$link <- metadata$file
+metadata$link <- paste0('<img src=\'Spring/', metadata$link, '\' height=\'50\' witdth = \'50\'></img>')
+ 
+
+  datatable(
+    metadata, filter = "top",
+    rownames=FALSE, width="100%", 
+    class='compact cell-border hover', # CSS classes https://datatables.net/manual/styling/classes
+    extensions=c('Buttons','Select','SearchPanes'),
+    selection = 'none',
+    escape = FALSE,
+    options = list(dom = 'Pfrtip', buttons=c('copy','csv','excel','pdf'),
+    columnDefs = list(list(
+        searchPanes = list(show = FALSE), targets = 1
+    ))),
+  )
+  
+```
+
+
+## Filenames
+
+#### Scheme
+
+`<specID>_<status>_<scan><(desc)>_<(version)>_<rec>`
+
+#### Labels
+
+`specID`: *str + num*  specimen ID (JP01)
+
+`status`:  *str* specimen status (dead | invivo)
+
+`scan`: *num + str* number of scans (1scan)
+
+`desc`: OPTIONAL *str + num* additional description of scans
+
+`version`: OPTIONAL *str + num* specifies version if multiple (v1) 
+
+`seq`: *num * sequence number (053)
+
+`rec`: *str + num* recording identifier  (rec00182)
+
+#### Legend:
+
+`<field>` required field
+
+`<(field)>` Optional field
+
+<!-- -->
+
+
+#  {.unnumbered}
+
+## Issues
+
+- Naming: specID includes country, relable it to `<coun><specID>` ?
+
