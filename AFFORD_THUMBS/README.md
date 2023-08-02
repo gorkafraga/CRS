@@ -11,6 +11,7 @@
 - minimum pic size. Lossy compression acceptable? 
 
 ## Issues
+- Formatting of file naming description (see MNE toolbox documentation )
 - ~! display errors when showing FILTER PANE buttons (the browser cuts it )
 - Naming: specID includes country, relabel it to `<country><specID>` ?
 - Hover resizing will have to be adapted if Scroller is TRUE

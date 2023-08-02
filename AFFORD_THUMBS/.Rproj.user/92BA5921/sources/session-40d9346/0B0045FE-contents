@@ -1,22 +1,24 @@
 ---
 title: "Exploring picture-data"
-author: "GFragaGonzalez"
+author: "GFragaGonzalez (CRS-UZH)"
 date: "`r Sys.Date()`"
 description: "Testing a simple data viewer to explore image (thumbnails) with minimal coding requirements "
 editor: visual
 format:  
   html:
+    theme: default
     title-block-banner: true
     page-layout: full
     code-fold: true
     code-tools: true
     standalone: true
     embedded-resources: true
-    #toc: false
+    toc: true
     #toc-float: true
     #collapsed: true
     #number-sections: false
     #toc-depth: 3
+css: styles.css
 ---
 
 ```{r setup, include=FALSE}
@@ -115,7 +117,7 @@ For this early test the following scheme was inferred from the filenames of file
 
 Here you can filter each column in the table filter boxes or click `'FILTER ROWS'` button to see panes with filters.The `filter panes` display as well how many cells are there (but panes are not updated when filters are active)
 
-> NOTE: The filter panes are also not 'updated' if we have some filter in the column boxes in the table it self. This can be a bit confusing... 
+> NOTE: The filter panes are also not 'updated' if we have some filter in the column boxes in the table it self. This can be a bit confusing...
 
 ```{r PanelWithFilter, echo=TRUE, results='asis'}
 # Dynamic table -------------------------------------------------
@@ -129,11 +131,12 @@ datatable(
   selection = 1,
   escape = FALSE,
   options = list(
+    pageLength = 20,
     dom = 'Btip',
     buttons=c('searchPanes','copy','csv','excel','pdf'),
     language = list(searchPanes = list(collapse = "FILTER ROWS")),
     #scroller = TRUE, #If this is TRUE I can't disabled the horiz scroll
-    scrollY = 1000,
+    #scrollY = 1000,
     scrollX = FALSE,
     scrollCollapse =  FALSE, # this fixes display issues with filter pane depending on selection 
     #paging = FALSE, 
