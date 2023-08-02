@@ -67,11 +67,16 @@ library(here )
 metadata <- read.csv(file.path(here::here(),'Metadata_filenames.csv'))
 folderWithPics <- paste0('Spring_jpg',.Platform$file.sep)
 # add html component to column with file names
- metadata$pic <- paste0('<img src=\'', folderWithPics, metadata$file, '\' height=\'70\' witdth = \'70\'></img>')
-
+sourceAdress <- paste0(folderWithPics, metadata$file)
+sourceAddress <- file.path(here::here(),'Spring_jpg', metadata$file)
+metadata$pic <- paste0('<a href =\'',sourceAdress,' \'>',
+                       '<img src=\'', sourceAdress, '\' height=\'70\' witdth = \'70\'',
+                       'alt=\'Image\'','/> </a>')
+  
 #metadata %>% relocate(file, .after = last_col())
+ 
 
-
+ 
 ```
 
 ## Filenames
@@ -128,7 +133,7 @@ datatable(
     buttons=c('searchPanes','copy','csv','excel','pdf'),
     language = list(searchPanes = list(collapse = "FILTER ROWS")),
     #scroller = TRUE, #If this is TRUE I can't disabled the horiz scroll
-    scrollY = 600,
+    scrollY = 1000,
     scrollX = FALSE,
     scrollCollapse =  FALSE, # this fixes display issues with filter pane depending on selection 
     #paging = FALSE, 
