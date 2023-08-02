@@ -11,7 +11,7 @@ format:
     code-fold: true
     code-tools: true
     standalone: true
-    self-contained: true
+    embedded-resources: true
     #toc: false
     #toc-float: true
     #collapsed: true
@@ -52,12 +52,11 @@ format:
 </style>
 ```
 # Info
-::: panel-tabset
 
+::: panel-tabset
 ## Metadata
 
-First we need a csv or excel table with metadata that is also reflected in the filename parts. 
-The metadata table has the name of the picture files. Here we add some HTML formatting to the cells containing the filename (e.g,. so that they expand when hovering the mouse). The parameter `escape = FALSE` is required in `data table` (r package to render the table) to render the images.  
+First we need a csv or excel table with metadata that is also reflected in the filename parts. The metadata table has the name of the picture files. Here we add some HTML formatting to the cells containing the filename (e.g,. so that they expand when hovering the mouse). The parameter `escape = FALSE` is required in `data table` (r package to render the table) to render the images.
 
 ```{r, echo=TRUE, results='asis'}
 library(DT)
@@ -76,8 +75,8 @@ folderWithPics <- paste0('Spring_jpg',.Platform$file.sep)
 ```
 
 ## Filenames
-For this early test the following scheme was inferred from the filenames of files starting with "JP*". 
-Metadata table was created accordingly. Future versions should specify the remaining files or create a separate table for the other type of files available
+
+For this early test the following scheme was inferred from the filenames of files starting with "JP\*". Metadata table was created accordingly. Future versions should specify the remaining files or create a separate table for the other type of files available
 
 #### Scheme
 
@@ -102,25 +101,25 @@ Metadata table was created accordingly. Future versions should specify the remai
 `<field>` required field
 
 `<(field)>` Optional field
-
 :::
 
 # Picture viewer
 
 ::: panel-tabset
-
-
 ## With Filter button
-Here you can filter each column in the table filter boxes or click `'FILTER ROWS'` button to see panes with filters.The  `filter panes` display as well how many cells are there (but panes are not updated when filters are active)
 
-```{r, echo=TRUE, results='asis'}
+Here you can filter each column in the table filter boxes or click `'FILTER ROWS'` button to see panes with filters.The `filter panes` display as well how many cells are there (but panes are not updated when filters are active)
+
+> NOTE: The filter panes are also not 'updated' if we have some filter in the column boxes in the table it self. This can be a bit confusing... 
+
+```{r PanelWithFilter, echo=TRUE, results='asis'}
 # Dynamic table -------------------------------------------------
 
 datatable(
   metadata, filter = "top",
   rownames=FALSE, width="100%", 
   class='compact cell-border hover', # See CSS classes https://datatables.net/manual/styling/classes
-  extensions=c('Buttons','Select','SearchPanes'),
+  extensions=c('Buttons','Select','SearchPanes','Scroller'),
   #selection = 'none',
   selection = 1,
   escape = FALSE,
@@ -128,6 +127,11 @@ datatable(
     dom = 'Btip',
     buttons=c('searchPanes','copy','csv','excel','pdf'),
     language = list(searchPanes = list(collapse = "FILTER ROWS")),
+    #scroller = TRUE, #If this is TRUE I can't disabled the horiz scroll
+    scrollY = 600,
+    scrollX = FALSE,
+    scrollCollapse =  FALSE, # this fixes display issues with filter pane depending on selection 
+    #paging = FALSE, 
     columnDefs = list(
       list(searchPanes = list(show = FALSE), targets = 5)  #'target' will change how many panes
     )
@@ -138,10 +142,11 @@ datatable(
   
 ```
 
-
 ## With open Filter Panes
+
 Filter boxes in table and also filter panes above
-```{r, echo=TRUE, results='asis'}
+
+```{r filterPanes, echo=TRUE, results='asis'}
 # Dynamic table -------------------------------------------------
 
  datatable(
@@ -162,8 +167,10 @@ Filter boxes in table and also filter panes above
 ```
 
 ## Just the table
-Just the table with filter boxes 
-```{r, echo=TRUE, results='asis', fig.width=1500}
+
+Just the table with filter boxes
+
+```{r justTable, echo=TRUE, results='asis', fig.width=1500}
 # Dynamic table -------------------------------------------------
 library(DT)
 library(dplyr)
@@ -182,6 +189,4 @@ metadata %>%
  DT::formatStyle(columns = colnames('file'), fontSize = '10%')
 
 ```
-
-
 :::
