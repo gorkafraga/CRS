@@ -1,11 +1,11 @@
 
 ## Suggestions
 - User friendliness : render table with only a few rows, and perhaps cols (default filter?)
-- Picture compression
- 
+  
 ## Extensions
-- Layout in panels (flexdashboard) for quantitative data
-
+ - A tick box to mark some of the rows (eg., upon inspection)
+- KEYTABLE extension in datat table to navigate as in excel 
+- Try 'bscols' with filters/check boxes and put them in a sidebar
 
 ## Queries to Willy 
 - minimum pic size. Lossy compression acceptable? 

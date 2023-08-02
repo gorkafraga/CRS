@@ -31,14 +31,6 @@ bscols(
 )
 
 
-
-
-
-
-
-
-
-
 # Wrap data frame in SharedData
 #sd <- SharedData$new(quakes[sample(nrow(quakes), 100),])
 
