@@ -25,24 +25,6 @@ css: styles.css
     knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=FALSE)
 ```
 
-<!-- ```{=html} -->
-
-<!-- <style> -->
-
-<!--   /* Add CSS for the hover effect */ -->
-
-<!--   img:hover { -->
-
-<!--     height: 100%; /* Change this value to the desired enlarged height */ -->
-
-<!--     width: 100%; /* Change this value to the desired enlarged width */ -->
-
-<!--   } -->
-
-<!-- </style> -->
-
-<!-- ``` -->
-
 ```{=html}
 <style>
   /* Add CSS for the hover effect */
@@ -62,7 +44,6 @@ First we need a csv or excel table with metadata that is also reflected in the f
 
 ```{r, echo=TRUE, results='asis'}
 library(DT)
-library(dplyr)
 library(here )
 #-------------------------------------------------
 # Read filenames from directory
@@ -75,8 +56,7 @@ metadata$pic <- paste0('<a href =\'',sourceAdress,' \'>',
                        '<img src=\'', sourceAdress, '\' height=\'70\' witdth = \'70\'',
                        'alt=\'Image\'','/> </a>')
   
-#metadata %>% relocate(file, .after = last_col())
- 
+  
 
  
 ```
@@ -137,7 +117,7 @@ datatable(
     buttons=c('searchPanes','copy','csv','excel','pdf'),
     language = list(searchPanes = list(collapse = "FILTER ROWS")),
     #scroller = TRUE, #If this is TRUE I can't disabled the horiz scroll
-    #scrollY = 1000,
+    scrollY = 1000,
     scrollX = FALSE,
     scrollCollapse =  FALSE, # this fixes display issues with filter pane depending on selection 
     #paging = FALSE, 
@@ -199,4 +179,3 @@ metadata %>%
 
 ```
 :::
- 
