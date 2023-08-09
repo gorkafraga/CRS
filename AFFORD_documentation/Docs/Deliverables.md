@@ -9,25 +9,20 @@ _Data_  | _Metadata_ | _Docs_ | _Code_
 
 ## Data 
 ### Data types and formats
-#### Two-photon microscopy
-_.tiff_ | _imaris format .im and video .mp4_ \
-Visualizations of brain barriers and fluid transport \
-30 GiB per set. total 12 TiB
+ ... insert table ...  
 
-#### Near infrared imaging (NIR) 
-_Zen format .czi_ | _exported as .tif or .avi_ \
-Anatomy and liquid flow in cerebrospinal fluid spaces  
-
-#### Fluorescence and Confocal imaging 
-_Nikon format .nd2_ | _zen format .czi_ \ 
-2D Images of tissue sections \
-
- 
-...
 ### File types
-
+_raw_  | _reconstructed_ |  _exported_ 
+- `raw`: source data, directly obtained from the measurement instrument
+- `reconstructed`: when raw data requires some minimum preprocessing (reconstruction) to be usable
+- `exported`: format has been changed for shareability 
 
 # Metadata
+Essential metadata will be stored at different levels
+- `Filenames`: filename parts and metadata stored depend on data format and type
+- `Folder structure`: measurements from different labs (e.g Japan, France) are stored in separate folders
+- `Table`: a key table will explain and extend description of files in the main folders. These tables can be
+- `Text logs`: when applicable, text or markdown files (e.g., README.md)  at each folder level will inform of content, report errors, etc
 
 # Docs 
 Documentation 
