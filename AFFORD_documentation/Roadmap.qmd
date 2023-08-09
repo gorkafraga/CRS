@@ -5,7 +5,7 @@ author:
   affiliation: "Center for Reproducible Science - University of Zurich"
 date: "`r Sys.Date()`"
 description: "Planning the main deliverables from the CRS side"
-editor: visual
+editor: source
 format:  
   html:
     page-layout: full
@@ -14,9 +14,13 @@ format:
     toc: true
     #number-sections: true
     number-depth: 2
+    
 ---
 
+```{r , child=c(file.path("Docs/Proposal.md"),file.path("Docs/Storage.md")), eval=TRUE}
+```
 
+```{r, child=file.path("Docs/Storage.md"), eval=TRUE}
+```
 
-````{r test, child="Proposal.md", eval=TRUE}
 ```
