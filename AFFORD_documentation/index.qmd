@@ -1,0 +1,33 @@
+---
+title: "AFFORD roadmap"
+author: 
+  name: "Gorka Fraga-Gonzalez"
+  affiliation: "Center for Reproducible Science - University of Zurich"
+date: "`r Sys.Date()`"
+description: "Planning the main deliverables from the CRS side"
+editor: source
+format:  
+  website:
+    navbar:
+      search: true
+      left:
+        - text: "Home"
+          file: index.qmd
+---
+
+
+```{r, echo=FALSE, results='asis'}
+
+res <- readLines(file.path("Docs/Storage.md"))
+cat(gsub("$", "  ", res, perl = TRUE), sep = "\n")
+
+```
+
+::: panel-tabset
+
+```{r, child =file.path("Docs/Data.Rmd") }
+
+```
+:::
+
+

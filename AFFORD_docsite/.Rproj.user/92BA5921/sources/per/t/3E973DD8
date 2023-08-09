@@ -1,0 +1,31 @@
+{
+    "id": "3E973DD8",
+    "path": "~/GitHub/CRS_AFFORD/AFFORD_docsite/Data.Rmd",
+    "project_path": "Data.Rmd",
+    "type": "r_markdown",
+    "hash": "2573311997",
+    "contents": "",
+    "dirty": false,
+    "created": 1691595702247.0,
+    "source_on_save": true,
+    "relative_order": 3,
+    "properties": {
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "source_window_id": "",
+        "Source": "Source",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "",
+        "cursorPosition": "20,0",
+        "scrollLine": "8",
+        "rmdVisualModeLocation": "594:381"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1691597313,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1691597313368,
+    "read_only": false,
+    "read_only_alternatives": []
+}
