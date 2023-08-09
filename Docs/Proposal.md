@@ -6,15 +6,15 @@ This doc is summarizing goals and parts of the project with involvement of the C
 
 The main work packages are:
 
-WP1 \[InterfaceGroup\] Coordination work
+WP1. \[InterfaceGroup\] Coordination work
 
-*WP2 \[CRS\] Establish structures*
+WP2. \[CRS\] Establish structures
 
-WP3 \[InterfaceGroup\] Determine Resource requirements
+WP3. \[InterfaceGroup\] Determine Resource requirements
 
-*WP4 \[CRS\] Define open research data (ORD) support model*
+WP4. \[CRS\] Define open research data (ORD) support model
 
-# Work packages
+# CRS Work packages
 
 ## WP2. Establish structures
 
