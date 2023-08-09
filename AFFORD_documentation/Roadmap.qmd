@@ -1,0 +1,22 @@
+---
+title: "AFFORD roadmap"
+author: 
+  name: "Gorka Fraga-Gonzalez"
+  affiliation: "Center for Reproducible Science - University of Zurich"
+date: "`r Sys.Date()`"
+description: "Planning the main deliverables from the CRS side"
+editor: visual
+format:  
+  html:
+    page-layout: full
+    title-block-banner: true
+    theme: simple
+    toc: true
+    #number-sections: true
+    number-depth: 2
+---
+
+
+
+````{r test, child="Proposal.md", eval=TRUE}
+```
