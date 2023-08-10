@@ -24,8 +24,8 @@ Why? version control, accessibility, findability
 The Git-related terminology can be confusing. Available documentation is too technical and can push some researchers away: they run a research lab, not a team of developers. 
 However, they increasingly depend on coding to produce reproducible findings. 
 
-This is a concise, very practical manual describing a user scenario in which no advanced coding skills are needed. Only the simplest Git functionalities are used:  
-keeping your code synchronized online and being able access previous versions. Additional content for users with advanced interest describes how this could work in a lab where several projects are run. 
+
+A concise, very practical manual describing a user scenario in which no advanced coding skills are needed. Only the simplest Git functionalities are used: keeping your code synchronized online and being able access previous versions. Additional content for users with advanced interest describes how this could work in a lab where several projects are run. 
 A box clarifies terms like Git, Gitlab and Github, push, commit, pull, etc.  
 
 > There are some papers (e.g. https://doi.org/10.1007/s40614-019-00202-5) . The idea here is to do it more concise and practical (primer style), with better visuals. 
