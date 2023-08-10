@@ -3,7 +3,7 @@
     "path": "~/GitHub/CRS_AFFORD/AFFORD_image_explorer/AFFORD_image_explorer.qmd",
     "project_path": "AFFORD_image_explorer.qmd",
     "type": "quarto_markdown",
-    "hash": "2016170240",
+    "hash": "1144964843",
     "contents": "",
     "dirty": false,
     "created": 1691497554978.0,
@@ -17,15 +17,15 @@
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
         "rmdVisualModeLocation": "2:0",
-        "cursorPosition": "120,21",
-        "scrollLine": "112"
+        "cursorPosition": "23,0",
+        "scrollLine": "5"
     },
     "folds": "",
-    "lastKnownWriteTime": 1691502068,
+    "lastKnownWriteTime": 1691657116,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1691502068975,
+    "last_content_update": 1691657116131,
     "read_only": false,
     "read_only_alternatives": []
 }

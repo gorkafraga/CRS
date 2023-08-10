@@ -21,8 +21,6 @@ format:
 css: styles.css
 ---
 
-
-
 ```{=html}
 <style>
   /* Add CSS for the hover effect */
@@ -65,7 +63,7 @@ For this early test the following scheme was inferred from the filenames of file
 
 #### Scheme
 
-`<specID>_<status>_<scanID><(desc)>_<rec>`
+`<specID>-<status>-<scanID><(desc)>_<rec>`
 
 #### Labels
 

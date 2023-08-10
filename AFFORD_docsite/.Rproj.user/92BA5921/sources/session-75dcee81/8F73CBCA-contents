@@ -63,7 +63,7 @@ For this early test the following scheme was inferred from the filenames of file
 
 #### Scheme
 
-`<specID>-<status>-<scanID><(desc)>_<rec>`
+`<specID>_<status>_<scanID><(desc)>_<rec>`
 
 #### Labels
 

@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "Data.html",
+    "href": "Data.html",
+    "title": "Open research data",
+    "section": "",
+    "text": "With the FAIR principles in mind, we consider the ORD needs of the reference project and potential solutions"
+  },
+  {
+    "objectID": "Data.html#data-info",
+    "href": "Data.html#data-info",
+    "title": "Open research data",
+    "section": "Data info",
+    "text": "Data info\n\nData types and formats\n\nAttaching package: 'dplyr'\nThe following objects are masked from 'package:stats':\n\n    filter, lag\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\n\n\n\n\n\nFile types\nraw | reconstructed | exported\n- raw: source data, directly obtained from the measurement instrument\n- reconstructed: when raw data requires some minimum preprocessing (reconstruction) to be usable  - exported: format has been changed for shareability"
+  }
+]

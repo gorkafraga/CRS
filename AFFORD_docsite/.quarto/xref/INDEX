@@ -1,17 +1,5 @@
 {
-  "index.qmd": {
-    "index.html": "55cf5ee8"
-  },
-  "about.qmd": {
-    "about.html": "31607c31"
-  },
   "Data.Rmd": {
-    "Data.html": "3ee4117e"
-  },
-  "Proposal.md": {
-    "Proposal.html": "b62b5888"
-  },
-  "Storage.md": {
-    "Storage.html": "b5f40ad8"
+    "Data.html": "f4752ecc"
   }
 }

@@ -3,7 +3,7 @@
     "path": "~/GitHub/CRS_AFFORD/AFFORD_docsite/_quarto.yml",
     "project_path": "_quarto.yml",
     "type": "yaml",
-    "hash": "2818439551",
+    "hash": "2504998037",
     "contents": "",
     "dirty": false,
     "created": 1691595199170.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "16,18",
+        "cursorPosition": "2,0",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1691597842,
+    "lastKnownWriteTime": 1691673505,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1691597842675,
+    "last_content_update": 1691673505315,
     "read_only": false,
     "read_only_alternatives": []
 }
