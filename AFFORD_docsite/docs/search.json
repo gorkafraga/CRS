@@ -12,5 +12,12 @@
     "title": "Open research data",
     "section": "Data info",
     "text": "Data info\n\nData types and formats\n\nAttaching package: 'dplyr'\nThe following objects are masked from 'package:stats':\n\n    filter, lag\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\n\n\n\n\n\nFile types\nraw | reconstructed | exported\n- raw: source data, directly obtained from the measurement instrument\n- reconstructed: when raw data requires some minimum preprocessing (reconstruction) to be usable  - exported: format has been changed for shareability"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "AFFORD documentation site",
+    "section": "",
+    "text": "Grüezi wohl !\nThis is the documentation site for the AFFORD project of CRS + UZH\n\nI just followed this instructions: https://quarto.org/docs/websites/"
   }
 ]
