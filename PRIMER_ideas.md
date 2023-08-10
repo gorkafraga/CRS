@@ -1,10 +1,24 @@
 
 # CRS PRIMER ideas
-The goal of these PRIMERS is to promote available that are not too complicated for many researchers, but are sometimes hard to see. There are plenty of Galleries and docs online but they are sometimes hard to translate to simplest user cases. 
-Of course this is limited to scientist that code to some extent. 
 
 
-## 1. A very basic setup of Github to make your code more FAIR 
+## 1. Project folder trees
+This would be a few principles to guide a research project folder structure, and some examples of increasing complexity
+_Main Principles_
+ - Fix a global structure from the start, not too rigid, not too open to changes
+ - Terminology for dummies: root directory, parent folder, children, etc.
+ - Healthy habits: Readme.txt files at each level when relevant to SHORTLY show what's inside 
+ - Raw data separate from analysis folder, and why 
+ - Scripts separate from data, and why  
+
+
+The PRIMERS below are oriented for researchers using coding to some extent, but not necessarily advanced programmers
+
+## 2. Forget the Backlash: project folders and relative paths
+Why? reproducibility, interoperability 
+Integrates well with primer #1. Explains the concept of relative and absolute path. Familiar problem: everytime you share the script with someone or you run it in a different device the paths to your data change. Recommends a fix global structure, e.g., script folder at the same level as data folder. Gives examples in matlab, python and R with functions to avoid this issue. Another problem: file separator differs acrross operating systems. Again Matlab, py and R examples on how to avoid hardcoding that. 
+
+## 3. A very basic setup of Github to make your code more FAIR 
 Why? version control, accessibility, findability 
 
 The Git-related terminology can be confusing. Available documentation is too technical and can push some researchers away: they run a research lab, not a team of developers. 
@@ -17,7 +31,7 @@ A box clarifies terms like Git, Gitlab and Github, push, commit, pull, etc.
 > There are some papers (e.g. https://doi.org/10.1007/s40614-019-00202-5) . The idea here is to do it more concise and practical (primer style), with better visuals. 
 And more readable than IT tutorials
 
-## 2. Making a website with R and Github 
+## 4. Making a website with R and Github 
 Why? facilitates sharing, dissemination, education 
 
 Intended for regular users of R and python (not necessarily expert programmers) and basic users of Github.
@@ -28,7 +42,7 @@ A simple workflow is described and links for more complicated possibilities prov
 
 > Limited to R, including python tools will make it too long
  
-## 3. Using R interactive data tables as a data finder or an image explorer  
+## 5. Using R interactive data tables as a data finder or an image explorer  
 Why? facilitates data sharing, findability, accessibility  
 
 Interactive html tables to share or explore results or data available. Shows a simple pipeline which only requires R markdown or Quarto, so just R coding experience. 
