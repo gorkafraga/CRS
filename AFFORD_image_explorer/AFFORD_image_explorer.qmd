@@ -49,7 +49,7 @@ folderWithPics <- paste0('Spring_jpg',.Platform$file.sep)
 sourceAdress <- paste0(folderWithPics, metadata$file)
 sourceAddress <- file.path(here::here(),'Spring_jpg', metadata$file)
 metadata$pic <- paste0('<a href =\'',sourceAdress,' \'>',
-                       '<img src=\'', sourceAdress, '\' height=\'70\' witdth = \'70\'',
+                       '<img src=\'', sourceAdress, '\' height=\'70\' width = \'70\'',
                        'alt=\'Image\'','/> </a>')
   
   
@@ -95,7 +95,7 @@ Here you can filter each column in the table filter boxes or click `'FILTER ROWS
 
 > NOTE: The filter panes are also not 'updated' if we have some filter in the column boxes in the table it self. This can be a bit confusing...
 
-```{r PanelWithFilter, echo=TRUE, results='asis'}
+```{r PanelWithFilter}
 #| echo: fenced
 # Dynamic table -------------------------------------------------
 
@@ -131,7 +131,7 @@ datatable(
 
 Filter boxes in table and also filter panes above
 
-```{r filterPanes, echo=TRUE, results='asis'}
+```{r }
 # Dynamic table -------------------------------------------------
 
  datatable(
