@@ -68,7 +68,9 @@ server <- function(input, output, session) {
       width = "100%",
       extensions = c('Buttons', 'Select'),
       selection = 'none',
-      options = list(dom = 'Bfrtip', buttons = c('copy', 'csv', 'excel', 'pdf'))
+      options = list(dom = 'Bfrtip',
+                     buttons = c('copy', 'csv', 'excel', 'pdf'),
+                     pageLength =  20)
     )
   })
 }

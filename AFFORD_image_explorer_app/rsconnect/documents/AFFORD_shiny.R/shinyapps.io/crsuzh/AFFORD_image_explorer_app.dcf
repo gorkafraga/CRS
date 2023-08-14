@@ -5,7 +5,7 @@ account: crsuzh
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 9602519
-bundleId: 7565489
+bundleId: 7565623
 url: https://crsuzh.shinyapps.io/AFFORD_image_explorer_app/
 version: 1
 asMultiple: FALSE
