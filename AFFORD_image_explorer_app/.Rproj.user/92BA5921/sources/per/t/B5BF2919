@@ -1,9 +1,9 @@
 {
     "id": "B5BF2919",
-    "path": "~/GitHub/CRS_AFFORD/AFFORD_image_explorer/AFFORD_image_explorer.qmd",
+    "path": "~/GitHub/CRS_AFFORD/AFFORD_image_explorer_app/AFFORD_image_explorer.qmd",
     "project_path": "AFFORD_image_explorer.qmd",
     "type": "quarto_markdown",
-    "hash": "1132588710",
+    "hash": "3717894017",
     "contents": "",
     "dirty": false,
     "created": 1691497554978.0,
@@ -17,15 +17,15 @@
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
         "rmdVisualModeLocation": "2:0",
-        "cursorPosition": "97,21",
-        "scrollLine": "82"
+        "cursorPosition": "40,2",
+        "scrollLine": "10"
     },
     "folds": "",
-    "lastKnownWriteTime": 1692013075,
+    "lastKnownWriteTime": 1692012813,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1692013075206,
+    "last_content_update": 1692012813476,
     "read_only": false,
     "read_only_alternatives": []
 }
