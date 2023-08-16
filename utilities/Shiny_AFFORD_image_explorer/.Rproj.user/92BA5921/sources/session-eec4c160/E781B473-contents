@@ -4,7 +4,7 @@ library(DT)
 library(readr)
 
 # Set URL for default file
-fileinput <- "https://raw.githubusercontent.com/gorkafraga/CRS/main/AFFORD_data/Metadata_filenames_html.csv"
+fileinput <- "https://raw.githubusercontent.com/gorkafraga/CRS/main/utilities/Shiny_AFFORD_image_explorer/www/Metadata_filenames_html.csv"
 
 # USER INTERFACE 
 # ===============================================================
@@ -112,10 +112,11 @@ server <- function(input, output, session) {
       filter = "top",
       rownames = FALSE, 
       width = "100%",
-      extensions = c('Buttons'),
+      extensions = c('Buttons','Responsive','KeyTable'),
       selection = 'none',
       options=list(
-        dom='Ptip', 
+        keys=TRUE,
+        dom='Brftip', 
         buttons=c('copy','csv','excel','pdf'),
         pageLength=20
       )
