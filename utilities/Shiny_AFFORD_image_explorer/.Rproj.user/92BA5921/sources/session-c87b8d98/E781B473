@@ -1,11 +1,11 @@
 {
     "id": "E781B473",
-    "path": "~/GitHub/CRS/utilities/Shiny_AFFORD_image_explorer/AFFORD_shiny_filterPanels.R",
+    "path": "C:/Users/GFraga/Documents/GitHub/CRS/utilities/Shiny_AFFORD_image_explorer/AFFORD_shiny_filterPanels.R",
     "project_path": "AFFORD_shiny_filterPanels.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "3484422695",
     "contents": "",
-    "dirty": true,
+    "dirty": false,
     "created": 1692190267442.0,
     "source_on_save": false,
     "relative_order": 3,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "108,14",
-        "scrollLine": "93"
+        "cursorPosition": "28,31",
+        "scrollLine": "12"
     },
     "folds": "",
-    "lastKnownWriteTime": 1692193169,
+    "lastKnownWriteTime": 1692194569,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1692193771198,
+    "last_content_update": 1692194569298,
     "read_only": false,
     "read_only_alternatives": []
 }

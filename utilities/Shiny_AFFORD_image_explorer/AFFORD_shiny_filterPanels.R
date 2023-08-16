@@ -61,6 +61,8 @@ server <- function(input, output, session) {
   # Initial data read
   read_data()
   
+  
+  # Observe user inputs ---------------------------------------------------
   # Observe the file upload
   observeEvent(input$uploadFile, {
     read_data(input$uploadFile)
@@ -87,12 +89,12 @@ server <- function(input, output, session) {
     }
   })
   
-  # Output ----------
+  # Generate Output --------------------------------------------
   
   output$data_table <- DT::renderDataTable({
     filtered_data <- data$table_data
     
-    # Check inputs in side panel 
+    # Filter according to inputs 
     if (!is.null(input$filterSpecID) && length(input$filterSpecID) > 0) {
       filtered_data <- filtered_data[filtered_data$specID %in% input$filterSpecID, ]
     }
