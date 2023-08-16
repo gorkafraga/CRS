@@ -2,6 +2,7 @@
 library(shiny)
 library(DT)
 library(readr)
+library(shinyscreenshot)
 
 # Set URL for default file
 fileinput <- "https://raw.githubusercontent.com/gorkafraga/CRS/main/utilities/Shiny_AFFORD_image_explorer/www/Metadata_filenames_html.csv"
@@ -10,17 +11,34 @@ fileinput <- "https://raw.githubusercontent.com/gorkafraga/CRS/main/utilities/Sh
 # ===============================================================
 
 ui <- fluidPage(
+  
   # Title 
-  titlePanel("Exploring images from metadata table"), 
+  titlePanel("Image explorer"), 
+  br(),
+  p('The default metadata table was read from:'),
+  p(fileinput),
+  
   # Panels
   sidebarLayout(
-    # Button to update the table and upload file
     sidebarPanel(
-      # 
-      fileInput("uploadFile", "Upload CSV File"),
-      actionButton("refreshButton", "Refresh table"),
+      width = 2, 
+      # Button to snapshot 
+      p('Take a snapshot of entire image. NOTE: does not work with Internet Explorer'),
+      actionButton("screenshot1", "Take a snapshot"),
+      p(),
+      br(),
       
-      # Dropdown menu for filtering specID
+      # Buttons to upload a table (uncomment if you want this feature)
+      #fileInput("uploadFile", "Upload CSV File"), 
+      
+      # Buttons to Refresh 
+      strong('Refresh the table if source may have changed'), 
+      br(),
+      actionButton("refreshButton", "RefreshTable"),
+      p(), # adding some empty space
+      br(),
+      
+      # Dropdown menu for filtering specID 
       selectizeInput("filterSpecID", "Filter specID:", choices = NULL, multiple = TRUE, options = list(placeholder = 'Select specID...')),
       
       # Dropdown menu for filtering scanID
@@ -31,6 +49,7 @@ ui <- fluidPage(
     ), 
     # Panel displaying the table
     mainPanel(
+      width = 10,
       DTOutput("data_table", width = "100%")
     )
   )
@@ -63,7 +82,12 @@ server <- function(input, output, session) {
   
   
   # Observe user inputs ---------------------------------------------------
-  # Observe the file upload
+  #screenshot
+  observeEvent(input$screenshot1, {
+    screenshot()
+  })
+  
+  # Observe the file upload (if SIDE Panel still contains this option)
   observeEvent(input$uploadFile, {
     read_data(input$uploadFile)
   })
@@ -92,8 +116,8 @@ server <- function(input, output, session) {
   # Generate Output --------------------------------------------
   
   output$data_table <- DT::renderDataTable({
-    filtered_data <- data$table_data
     
+    filtered_data <- data$table_data
     # Filter according to inputs 
     if (!is.null(input$filterSpecID) && length(input$filterSpecID) > 0) {
       filtered_data <- filtered_data[filtered_data$specID %in% input$filterSpecID, ]
