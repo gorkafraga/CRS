@@ -1,0 +1,1 @@
+This folder contains images in multiple formats (available at the moment in the local clone of this repo)

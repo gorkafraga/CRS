@@ -1,3 +1,3 @@
 # CRS_AFFORD
-Repository with my work at the Center for reproducible science - AFFORD project
+Repository with my **Code** and **Notes** at the Center for Reproducible Science 
 G.FragaGonzalez
