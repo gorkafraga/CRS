@@ -1,8 +1,10 @@
 # Load required packages
 library(shiny)
 library(DT)
+library(readr)
 
-fileiput <- 'Metadata_filenames_html.csv'
+# Set URL for default file
+fileinput <- "https://raw.githubusercontent.com/gorkafraga/CRS/main/AFFORD_data/Metadata_filenames_html.csv"
 
 # USER INTERFACE 
 # ===============================================================
@@ -14,6 +16,7 @@ ui <- fluidPage(
   sidebarLayout(
     # Button to update the table and upload file
     sidebarPanel(
+      # 
       fileInput("uploadFile", "Upload CSV File"),
       actionButton("refreshButton", "Refresh table"),
       
@@ -43,12 +46,12 @@ server <- function(input, output, session) {
   data <- reactiveValues(table_data = NULL)
   
   # Function to read data from CSV file
-  read_data <- function(file) {
+  read_data <- function(file = NULL) {
     tryCatch({
       if (!is.null(file)) {
-        data$table_data <- read.csv(file$datapath)
+        data$table_data <- read_csv(file$datapath, show_col_types = FALSE)
       } else {
-        data$table_data <- read.csv(fileiput)
+        data$table_data <- read_csv(fileinput, show_col_types = FALSE)
       }
     }, error = function(e) {
       cat("Error reading CSV file:", conditionMessage(e), "\n")
@@ -56,7 +59,7 @@ server <- function(input, output, session) {
   } 
   
   # Initial data read
-  read_data(NULL)
+  read_data()
   
   # Observe the file upload
   observeEvent(input$uploadFile, {
@@ -65,7 +68,7 @@ server <- function(input, output, session) {
   
   # Observe the refresh button click
   observeEvent(input$refreshButton, {
-    read_data(NULL)
+    read_data()
   })
   
   # Update the choices for filterSpecID dropdown
@@ -85,7 +88,7 @@ server <- function(input, output, session) {
   })
   
   # Output ----------
-    
+  
   output$data_table <- DT::renderDataTable({
     filtered_data <- data$table_data
     
@@ -94,7 +97,7 @@ server <- function(input, output, session) {
       filtered_data <- filtered_data[filtered_data$specID %in% input$filterSpecID, ]
     }
     if (!is.null(input$filterScanID) && length(input$filterScanID) > 0) {
-      filtered_data <- filtered_data[filtered_data$filterScanID %in% input$filterScanID, ]
+      filtered_data <- filtered_data[filtered_data$scanID %in% input$filterScanID, ]
     }
     if (!is.null(input$filterStatus) && length(input$filterStatus) > 0) {
       filtered_data <- filtered_data[filtered_data$status %in% input$filterStatus, ]

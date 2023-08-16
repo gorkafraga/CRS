@@ -1,0 +1,12 @@
+name: Shiny_AFFORD_image_explorer
+title: Shiny_AFFORD_image_explorer
+username: crsuzh
+account: crsuzh
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9615729
+bundleId: 7574365
+url: https://crsuzh.shinyapps.io/Shiny_AFFORD_image_explorer/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
