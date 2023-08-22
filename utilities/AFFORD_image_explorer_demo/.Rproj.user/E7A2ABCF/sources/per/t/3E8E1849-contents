@@ -1,0 +1,46 @@
+#The require packages must be installed first:
+#install.packages('remotes')
+#remotes::install_github('rstudio/DT')  
+#install.packages('htmltools')
+
+#Load the required libraries
+library(htmltools)
+library(DT) 
+
+# Read source table 
+metadata <- read.csv('Metadata_filenames.csv')
+
+
+
+# For picture rendering: add html component to the column with file names
+pictures_fullpath <- file.path('www',file.path(metadata$file))
+
+metadata$pic <- paste0('<a href=\'',pictures_fullpath,'\' target=\'_blank\'>',# hyperlink to redirect when clicking on the image 
+                       '<img src=\'', pictures_fullpath, '\' height=\'70\' alt=\'Image\'','/></a>')
+ 
+
+
+# Read source table # 
+#output_table <-  
+  datatable(
+    metadata,  
+    filter = "top", # add filter option for each column
+    rownames = FALSE, 
+    width="100%",
+    class = 'compact cell-border hover', # CSS classes https://datatables.net/manual/styling/classes
+    extensions = c('Buttons','Select'),
+    selection = 'none',
+    escape =FALSE, # render the image from files specified in the table cells with html code
+    options =list(
+      dom ='Bfrtip', 
+      pageLength = 20, # how many rows to show 
+      buttons = c('copy','csv','excel','pdf')
+    )
+  )
+ 
+
+#output_table # show in R viewer
+
+# Save the HTML output to a file
+#save_html(output_table, "output_table.html")
+    

@@ -1,0 +1,56 @@
+---
+title: "Interactive table with images and filter panels"
+date: "`r Sys.Date()`"
+author: 'CRS-UZH'
+output: html_document
+
+---
+
+
+```{r,  echo=FALSE}
+#The require packages must be installed first:
+#install.packages('remotes')
+#remotes::install_github('rstudio/DT')  
+#install.packages('htmltools')
+
+#Load the required libraries
+library(htmltools)
+library(DT) 
+
+# Read source table 
+metadata <- read.csv('Metadata_filenames.csv')
+
+
+
+# For picture rendering: add html component to the column with file names
+pictures_fullpath <- file.path('Images',file.path(metadata$file))
+
+metadata$pic <- paste0('<a href=\'',pictures_fullpath,'\' target=\'_blank\'>',# hyperlink to redirect when clicking on the image 
+                       '<img src=\'', pictures_fullpath, '\' height=\'70\' alt=\'Image\'','/></a>')
+
+
+
+
+#Render table 
+
+DT::datatable(
+    metadata, filter = "top",
+    rownames=FALSE, width="100%", 
+    class='compact cell-border hover', # CSS classes https://datatables.net/manual/styling/classes
+    extensions=c('Buttons','Select','SearchPanes'),
+    #selection = 'none',
+    selection = 1,
+    escape = FALSE,
+    options = list(dom = 'PBfrtip', 
+                   pageLength = 20, 
+                   buttons=c('copy','csv','excel','pdf'),
+                   columnDefs = list(list(
+                     searchPanes = list(show = TRUE), 
+                     targets = 5
+                   ))),
+  )
+ 
+    
+```
+
+
