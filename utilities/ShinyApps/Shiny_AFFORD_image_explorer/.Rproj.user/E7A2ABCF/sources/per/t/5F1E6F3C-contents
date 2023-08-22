@@ -4,8 +4,6 @@ library(DT)
 
 fileiput <- 'Metadata_filenames_html.csv'
 
-https://github.com/gorkafraga/CRS/blob/main/utilities/ShinyApps/Shiny_AFFORD_image_explorer/AFFORD_shiny.R
-
 # USER INTERFACE 
 # ===============================================================
 
