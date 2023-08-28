@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image name generator</title>
+ 
+  <style>
+    body {
+      font-family: Roboto;
+      font-size: 18px;
+      margin: 0;
+      padding: 20px;
+      color: #333333;
+    }    
+    h1 {
+      font-weight: 300;
+      font-size: 2em;
+      letter-spacing: -0.0325em;
+      margin-left: -15px;
+    }    
+    label {
+      display: block;
+      font-size: .88em;
+    }    
+    select,
+    input {
+      font-size: .88em;
+      font-weight: 300;
+      padding: 8px 4px;
+      width: 175px;
+      max-width: 100%;
+      border-radius: 4px;
+      background: #E7E7E7;
+      border: 0;
+    }    
+    select {
+      width: 100px;
+    }    
+    .content select {
+      width: 175px;
+    }    
+    .dimensions input {
+      width: 100px;
+    }    
+    .hyphen {
+      display: inline-block;
+      font-weight: 900;
+      font-size: 2em;
+      margin-top: 20px;
+      vertical-align: bottom;
+    }    
+    .chunk {
+      display: inline-block;
+      vertical-align: top;
+    }
+    
+    .chunk select {
+      display: block;
+      text-align: center;
+    }
+    
+    .soc,
+    .specID select {
+      text-transform: uppercase;
+    }
+    
+    .result {
+      width: 400px;
+      max-width: 100%;
+      margin-left: -15px;
+      color: #E41F35;
+    }
+    
+    .result-label {
+      margin-top: 2em;
+      margin-left: -15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Image name generator</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="chunk specID">
+          <label>specID</label>
+          <select id="specID">
+            <option disabled selected>specID</option>
+            <option>med</option>
+            <option>phr</option>
+            <option>cor</option>
+          </select>
+        </div>
+
+        <div class="hyphen">&hyphen;</div>
+
+        <div class="chunk type">
+          <label>Type</label>
+          <select id="type">
+            <option>ext</option>
+            <option>com</option>
+            <option>email</option>
+            <option>soc</option>
+            <option>int</option>
+          </select>
+        </div>
+
+        <div class="hyphen">&hyphen;</div>
+
+        <div class="chunk content">
+          <label>Content</label>
+          <select id="content"></select>
+        </div>
+
+        <div class="hyphen">&hyphen;</div>
+
+        <div class="chunk descriptor">
+          <label>Descriptive name</label>
+          <input id="descriptor" placeholder="Descriptive name">
+        </div>
+
+        <div class="hyphen">&hyphen;</div>
+
+        <div class="chunk campaign">
+          <label>Campaign (if applicable)</label>
+          <input id="campaign" placeholder="Campaign name here">
+        </div>
+
+        <div class="hyphen">&hyphen;</div>
+
+        <div class="chunk dimensions">
+          <label>Image dimensions</label>
+          <input class="width" placeholder="Width"> x
+          <input class="height" placeholder="Height">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <label class="result-label">Your file name</label>
+        <input class="result">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const specIDSelect = document.getElementById('specID');
+      const typeSelect = document.getElementById('type');
+      const contentSelect = document.getElementById('content');
+      const descriptorInput = document.getElementById('descriptor');
+      const campaignInput = document.getElementById('campaign');
+      const widthInput = document.querySelector('.width');
+      const heightInput = document.querySelector('.height');
+      const resultInput = document.querySelector('.result');
+
+      specIDSelect.addEventListener('change', updateResult);
+      typeSelect.addEventListener('change', updateContent);
+      descriptorInput.addEventListener('input', updateResult);
+      campaignInput.addEventListener('input', updateResult);
+      widthInput.addEventListener('input', updateResult);
+      heightInput.addEventListener('input', updateResult);
+
+      function updateContent() {
+        const selectedType = typeSelect.value;
+        const contentOptions = {
+          ext: [],
+          com: ['ImageLarge', 'FeaturedStat', 'ImageCTASmall', 'ImageCTALarge', 'ImageCTAPrimary', 'TextCarousel', 'NowTrending', 'ImageTextRotator', 'CarouselContent', 'ImageGallery', 'ProductImage', 'TabbedRotator', 'Video', 'Search', 'Essential Insights', 'Expert', 'Category1Icon', 'Category2Featured', 'CategoryFeatured', 'HomepageBanner', 'CategoryMain'],
+          email: ['banner', 'inline'],
+          soc: ['tw', 'fb', 'li'],
+          int: ['myCAH', 'myHR', 'Store']
+        };
+
+        contentSelect.innerHTML = '';
+        contentOptions[selectedType].forEach(function(option) {
+          const contentOption = document.createElement('option');
+          contentOption.textContent = option;
+          contentSelect.appendChild(contentOption);
+        });
+
+        updateResult();
+      }
+
+      function updateResult() {
+        const currentYear = new Date().getFullYear().toString().substr(2, 3) + '-';
+        const selected1 = specIDSelect.value.toUpperCase();
+        const selected2 = typeSelect.value;
+        const selected3 = contentSelect.value ? `-${contentSelect.value}-` : '-';
+        const selected4 = descriptorInput.value;
+        const selected5 = campaignInput.value ? `-${campaignInput.value}-` : '';
+        const imgWidth = widthInput.value + 'x';
+        const imgHeight = heightInput.value;
+        let result = selected1 + currentYear + selected2 + selected3 + selected4 + selected5 + imgWidth + imgHeight;
+        resultInput.value = result;
+      }
+    });
+  </script>
+</body>
+
+</html>
